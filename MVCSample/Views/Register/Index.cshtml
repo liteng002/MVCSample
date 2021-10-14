@@ -1,14 +1,31 @@
-﻿@model MVCSample.Models.RegisterModel
-
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model BLL.Entities.User
 
 <h2>注册</h2>
 
-<label>用户：</label>@Model.Name
-<br />
 
-<label>密码：</label>@Model.Password
-<br />
+@using (Html.BeginForm())
+{
+    <div>
+        <label>邀请人：</label>
+        @Html.TextBoxFor(m => m.INvitedBy.Name)
+    </div>
+    <div>
+        <label>账户：</label>
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+
+    </div>
+    <div>
+        <label>密码：</label>
+        @Html.PasswordFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.Password)
+
+    </div> <div>
+        <label>确认密码：</label>
+        @Html.PasswordFor(m => m.Password)
+    </div>
+
+    <button type="submit">提交</button>
+}
+
 
